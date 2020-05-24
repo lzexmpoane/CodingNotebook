@@ -1,4 +1,66 @@
-<h1>CodingNotebook</h1>
-<a href="./CodingNotebook.exe" download="CodingNotebook.exe">Download</a>
-<p>这玩意可能会被浏览器拦截，保留就行</p>
-<p>lzexmpoane留</p>
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<title>CodingNotebook</title>
+	</head>
+	<body>
+		<div id="ifr">
+			<h1><strong>Coding Notebook</strong></h1>
+			<a style="color: red" href="./CodingNotebook.exe" download="CodingNotebook.exe">下载</a>
+			<p>这玩意可能会被浏览器拦截，保留就行</p>
+		</div>
+		<div id="qmj" style="display:none;">
+			<h1 style="font-size:60px;color: black;">清明节，为所有的英雄致敬！</h1>
+			<h1 style="font-size:60px;color: black;">lzexmpoane留</h1>
+			<h1 style="color: black;text-align: right;">lzexmpoane&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+		</div>
+	</body>
+	<script type="text/javascript">
+		function getQinMingJieDate() {
+			var fullYear;
+			d = new Date();
+			var month=d.getMonth()+1;
+			var day=d.getDate();
+			var date=month+" "+day;
+			fullYear = d.getFullYear();
+			var t=0;
+			//清明节的日期是不固定的，规律是：闰年开始的前2年是4月4日，闰年开始的第3年和第4年是4月5日
+			if(isLeapYear(fullYear) || isLeapYear(fullYear -1)){
+				if(date=="4 4")
+				{
+					document.getElementsByTagName('html')[0].style.WebkitFilter="grayscale(1)";
+					document.getElementById('qmj').style.display = "block";
+					document.getElementById('ifr').style.display = "none";
+				}
+				if(date=="4 5")
+				{
+					document.getElementsByTagName('html')[0].style.WebkitFilter="grayscale(0)";
+					document.getElementById('qmj').style.display = "none";
+					document.getElementById('ifr').style.display = "block";
+				}
+			}
+			else{
+				if(date=="4 5")
+				{
+					document.getElementsByTagName('html')[0].style.WebkitFilter="grayscale(1)";
+					document.getElementById('qmj').style.display = "block";
+					document.getElementById('ifr').style.display = "none";
+				}
+				if(date=="4 4")
+				{
+					document.getElementsByTagName('html')[0].style.WebkitFilter="grayscale(0)";
+					document.getElementById('qmj').style.display = "none";
+					document.getElementById('ifr').style.display = "block";
+				}
+			}
+		}
+		//判断是否是闰年
+		function isLeapYear (Year) {
+			if (((Year % 4)==0) && ((Year % 100)!=0) || ((Year % 400)==0)) {
+				return (true);
+			} else { return (false); }
+		}
+		setInterval("getQinMingJieDate();",10);
+	</script>
+</html>
